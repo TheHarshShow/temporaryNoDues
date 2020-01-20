@@ -19,12 +19,24 @@
         </thead>
 
         {% for req in labRequests %}
+        {% if req.student_name.roll_number == student_roll %}
+
         <tr>
           <td align="right">{{ req.name.course_id }}</td>
           <td align="right">{{ req.student_name.student_name }}</td>
           <td align="right">{{ req.date_sent }}</td>
-          <td align="right">{{ req.approved }}</td>
+          {% if req.approved == 0 %}
+          <td align="right">Waiting...</td>
+          {% endif %}
+          {% if req.approved == 1 %}
+          <td align="right">Approved</td>
+          {% endif %}
+          {% if req.approved == 2 %}
+          <td align="right">Rejected</td>
+          {% endif %}
+          <td>{{ req.remark }}</td>
         </tr>
+        {% endif %}
         {% endfor %}
 
       </table>
@@ -50,12 +62,26 @@
 
         {% for req in otherRequests %}
 
+
+        {% if req.student_name.roll_number == student_roll %}
         <tr>
           <td align="right">{{ req.name.name }}</td>
           <td align="right">{{ req.student_name.student_name }}</td>
           <td align="right">{{ req.date_sent }}</td>
-          <td align="right">{{ req.approved }}</td>
+          {% if req.approved == 0 %}
+          <td align="right">Waiting...</td>
+          {% endif %}
+          {% if req.approved == 1 %}
+          <td align="right">Approved</td>
+          {% endif %}
+          {% if req.approved == 2 %}
+          <td align="right">Rejected</td>
+          {% endif %}
+
         </tr>
+
+
+        {% endif %}
         {% endfor %}
 
       </table>
