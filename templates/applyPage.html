@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Apply Page</title>
+  </head>
+  <body>
+    <h1>These are your lab requests</h1>
+
+    <div class="tableClass">
+      {% if labRequests %}
+      <table>
+        <thead>
+          <th>Lab Name</th>
+          <th>Student Name</th>
+          <th>Date Sent</th>
+          <th>Approval Status</th>
+          <th>Remark</th>
+        </thead>
+
+        {% for req in labRequests %}
+        <tr>
+          <td align="right">{{ req.name.course_id }}</td>
+          <td align="right">{{ req.student_name.student_name }}</td>
+          <td align="right">{{ req.date_sent }}</td>
+          <td align="right">{{ req.approved }}</td>
+        </tr>
+        {% endfor %}
+
+      </table>
+      {% else %}
+      <p>No record found</p>
+      {% endif %}
+
+
+
+    </div>
+
+    <h1>These are your miscellaneous requests</h1>
+    <div class="tableClass">
+      {% if otherRequests %}
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Student Name</th>
+          <th>Date Sent</th>
+          <th>Approval Status</th>
+          <th>Remark</th>
+        </thead>
+
+        {% for req in otherRequests %}
+
+        <tr>
+          <td align="right">{{ req.name.name }}</td>
+          <td align="right">{{ req.student_name.student_name }}</td>
+          <td align="right">{{ req.date_sent }}</td>
+          <td align="right">{{ req.approved }}</td>
+        </tr>
+        {% endfor %}
+
+      </table>
+      {% else %}
+      <p>No records found</p>
+      {% endif %}
+
+
+
+    </div>
+
+  </body>
+</html>
